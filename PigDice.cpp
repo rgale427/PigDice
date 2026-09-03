@@ -26,14 +26,14 @@ int main() {
 
 
     //display_rules(); // call the display_rules function
-    //******************
-     //  std::cout << "Let's Play PIG DICE!" << std::endl;
-    // std::cout << "* See how many turns it takes you to get to 20 points." << std::endl;
-   //  std::cout << "* Turn ends when you hold or roll a 1." << std::endl;
-    //std::cout << "* If you roll a 1, you lose all points for the turn." << std::endl;
-   // std::cout << "* If you hold, you bank all points for the turn to the game score." <<std::endl;
 
-    //*****************
+       std::cout << "Let's Play PIG DICE!" << std::endl;
+     std::cout << "* See how many turns it takes you to get to 20 points." << std::endl;
+     std::cout << "* Turn ends when you hold or roll a 1." << std::endl;
+    std::cout << "* If you roll a 1, you lose all points for the turn." << std::endl;
+    std::cout << "* If you hold, you bank all points for the turn to the game score." <<std::endl;
+
+
     play_game(my_game); // call the play_game function and pass the GameState object
 
 
