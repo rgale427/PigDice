@@ -65,11 +65,11 @@ std::cout<<g.game_score;
 void take_turn(GameState &g)
 {
     g.turn_count++;
-    std::cout << "\n TURN " << g.turn_count;
+    std::cout << "\nTURN " << g.turn_count;
     std::cout << " - Game Score: " << g.game_score;
     while (!g.turn_over)
     {
-       std::cout << "\n roll or hold? (r/h):  ";
+       std::cout << "\nroll or hold? (r/h):  ";
         std::cin >> g.choice;
 if (g.choice == 'r')
 {
@@ -84,7 +84,7 @@ else if (g.choice == 'h')
         }
 
     }
-std::cout<< "Score Banked This Turn: "<< g.score_this_turn;
+std::cout<< "\nScore Banked This Turn: "<< g.score_this_turn <<"\n";
 
 
 }
@@ -95,13 +95,13 @@ void roll(GameState &g)
 std::cout << "Die: " << die;
     if (die == 1)
     {
-        std::cout << "\n Turn Over. No Score.";
+        std::cout << "\nTurn Over. No Score.";
         g.score_this_turn = 0;
         g.turn_over = true;
     }
 else{
     g.score_this_turn+=die;
-std::cout <<" - Running score this turn " << g.score_this_turn;
+std::cout <<" - Running score this turn: " << g.score_this_turn;
 }
 }
 void hold(GameState &g)
