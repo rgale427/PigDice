@@ -21,10 +21,11 @@ private:
 public:
     Die()
     {
-         m_value = 0;
-        m_numOfSides = 6;
+          m_numOfSides = 6;
+        setValue();
+
     }
-void set_numOfSides(int numOfSides)
+void setNumOfSides(int numOfSides)
     {
         switch (numOfSides)
         {
@@ -61,24 +62,15 @@ void set_numOfSides(int numOfSides)
 
 void play_game(GameState &g);
 void take_turn(GameState &g);
-
+void display_rules(GameState &g);
 void roll(GameState &g);
 void hold(GameState &g);
 
 
 int main() {
     GameState my_game; // instantiate a GameState object
-Die myDie;
-    myDie.setValue();
 
-    //display_rules(); // call the display_rules function
-
-       std::cout << "Let's Play PIG DICE!" << std::endl;
-     std::cout << "* See how many turns it takes you to get to 20 points." << std::endl;
-     std::cout << "* Turn ends when you hold or roll a 1." << std::endl;
-    std::cout << "* If you roll a 1, you lose all points for the turn." << std::endl;
-    std::cout << "* If you hold, you bank all points for the turn to the game score." <<std::endl;
-
+    display_rules(my_game); // call the display_rules function
 
     play_game(my_game); // call the play_game function and pass the GameState object
 
@@ -134,19 +126,29 @@ std::cout<< "\nScore Banked This Turn: "<< g.score_this_turn <<"\n";
 
 
 }
+void display_rules(GameState &g)
+{
+    std::cout << "Let's Play PIG DICE!" << std::endl;
+    std::cout << "* See how many turns it takes you to get to 20 points." << std::endl;
+    std::cout << "* Turn ends when you hold or roll a 1." << std::endl;
+    std::cout << "* If you roll a 1, you lose all points for the turn." << std::endl;
+    std::cout << "* If you hold, you bank all points for the turn to the game score." <<std::endl;
+}
 void roll(GameState &g)
 {
-    srand(time(NULL));
-    int die = rand() % 6 + 1;
-std::cout << "Die: " << die;
-    if (die == 1)
+      // srand(time(NULL));
+    //int die = rand() % 6 + 1;
+    Die myDie;
+   // myDie.setValue();
+std::cout << "Die: " << myDie.getValue();
+    if (myDie.getValue() == 1)
     {
         std::cout << "\nTurn Over. No Score.";
         g.score_this_turn = 0;
         g.turn_over = true;
     }
 else{
-    g.score_this_turn+=die;
+    g.score_this_turn += myDie.getValue();
 std::cout <<" - Running score this turn: " << g.score_this_turn;
 }
 }
