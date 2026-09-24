@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include <random>
 
 // Build your solution starting from this code.
 
@@ -12,7 +13,51 @@ struct GameState {
     bool game_over = false;
     bool turn_over = false;
 };
+class Die
+{
+private:
+    int m_value;
+    int m_numOfSides;
+public:
+    Die()
+    {
+         m_value = 0;
+        m_numOfSides = 6;
+    }
+void set_numOfSides(int numOfSides)
+    {
+        switch (numOfSides)
+        {
+        case 4:
+            m_numOfSides = 4;
+            break;
+        case 6:
+            m_numOfSides = 6;
+            break;
+        case 8:
+            m_numOfSides = 8;
+            break;
+            default:
+            m_numOfSides = 6;
+        }
 
+    }
+    int getNumOfSides()
+    {
+        return m_numOfSides;
+    }
+    void setValue()
+    {
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<int> dis(1, m_numOfSides);
+        m_value = dis(gen);
+    }
+    int getValue()
+    {
+        return m_value;
+    }
+};
 
 void play_game(GameState &g);
 void take_turn(GameState &g);
@@ -23,7 +68,8 @@ void hold(GameState &g);
 
 int main() {
     GameState my_game; // instantiate a GameState object
-
+Die myDie;
+    myDie.setValue();
 
     //display_rules(); // call the display_rules function
 
