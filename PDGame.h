@@ -6,8 +6,8 @@
 
 class PDGame
 {
-
-private:
+protected:
+//private:
     Turn m_myTurn;
 bool m_gameOver;
     int m_gameScore;
@@ -15,8 +15,9 @@ public:
 PDGame();
     int getGameScore(); //step 1
 private:
-    void displayRules();
-    void playGame();
+    static void displayRules();
+public:
+    virtual void playGame();
 
 
 };
